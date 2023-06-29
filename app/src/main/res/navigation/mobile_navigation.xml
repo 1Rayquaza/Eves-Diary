@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_tracker">
+
+    <fragment
+        android:id="@+id/navigation_tracker"
+        android:name="com.example.evesdiary.ui.tracker.TrackerFragment"
+        android:label="@string/title_tracker"
+        tools:layout="@layout/fragment_tracker" />
+
+    <fragment
+        android:id="@+id/navigation_insights"
+        android:name="com.example.evesdiary.ui.insights.InsightsFragment"
+        android:label="@string/title_insights"
+        tools:layout="@layout/fragment_insights" />
+
+    <fragment
+        android:id="@+id/navigation_exercise"
+        android:name="com.example.evesdiary.ui.exercise.ExerciseFragment"
+        android:label="@string/title_exercise"
+        tools:layout="@layout/fragment_exercise" />
+
+    <fragment
+        android:id="@+id/navigation_distraction"
+        android:name="com.example.evesdiary.ui.distraction.DistractionFragment"
+        android:label="@string/title_distraction"
+        tools:layout="@layout/fragment_distraction" />
+
+</navigation>

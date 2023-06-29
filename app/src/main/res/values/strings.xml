@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Eve\'s Diary</string>
+    <string name="title_exercise">Exercise</string>
+    <string name="title_tracker">Period Tracker</string>
+    <string name="title_insights">Insights</string>
+    <string name="title_distraction">Mind Distraction</string>
+    <string name="title_logout">Logout</string>
+</resources>

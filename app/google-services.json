@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "49035908986",
+    "project_id": "eve-s-diary",
+    "storage_bucket": "eve-s-diary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49035908986:android:26b8e2aa852422bb87e8c3",
+        "android_client_info": {
+          "package_name": "com.example.evesdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49035908986-oo9bd75nfdjes1b9qm4ce01andq7l5c0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCE6TKtKqobaq-b_zpjbVM1c6YhUcmInE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49035908986-oo9bd75nfdjes1b9qm4ce01andq7l5c0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
