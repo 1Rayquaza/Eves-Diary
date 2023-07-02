@@ -24,8 +24,8 @@ public class ExerciseFragment extends Fragment {
         binding = FragmentExerciseBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textExercise;
-        exerciseViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+//        final TextView textView = binding.textExercise;
+//        exerciseViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

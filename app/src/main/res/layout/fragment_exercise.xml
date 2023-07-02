@@ -1,22 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="-15dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.exercise.ExerciseFragment">
+    android:layout_height="wrap_content"
+    tools:context=".ui.exercise.ExerciseFragment" >
 
     <TextView
-        android:id="@+id/text_exercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:justificationMode="inter_word"
+        android:text="Below exercises can provide relief during periods by reducing cramps, improving mood, decreasing bloating, and boosting energy levels."
+        />
+
+    <TextView
+        android:id="@+id/exercise1_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Cat-Cow Pose"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/exercise1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:justificationMode="inter_word"
+        android:text="Cat-Cow pose during periods benefits spinal mobility, pelvic relaxation, hormonal balance, stress reduction, and mind-body connection."
+        />
+
+    <TextView
+        android:id="@+id/exercise2_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Child Pose"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif2"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/exercise2" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:justificationMode="inter_word"
+        android:text="Child Pose offers relaxation and gentle stretching and supports menstrual health and overall well being."
+        />
+
+    <TextView
+        android:id="@+id/exercise3_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Hero Pose"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif3"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/exercise3" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:justificationMode="inter_word"
+        android:text="Hero Pose can relieve bloating, support digestion, gently stretch the thighs and knees, promote relaxation and stress reduction."
+        />
+
+    <TextView
+        android:id="@+id/exercise4_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Lunge Pose"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif4"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/exercise4" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:justificationMode="inter_word"
+        android:text="Lunge Pose helps provide relief from cramps, improve blood flow, core strength and increase energy levels."
+        />
+
+    <TextView
+        android:id="@+id/exercise5_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Cobra Pose"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif5"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/exercise5"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:justificationMode="inter_word"
+        android:text="Cobra Pose provides relief from lower back pain, improves hormonal balance support, and provides an energy boost."
+        />
+</LinearLayout>
+</ScrollView>
