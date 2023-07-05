@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="phases" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/app/src/main/res/drawable/cycle.svg" />
+                            <entry key="outputName" value="meditation" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../Downloads/meditation.svg" />
                           </map>
                         </option>
                       </PersistentState>

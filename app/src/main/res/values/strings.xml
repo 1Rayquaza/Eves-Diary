@@ -3,6 +3,11 @@
     <string name="title_exercise">Exercise</string>
     <string name="title_tracker">Period Tracker</string>
     <string name="title_insights">Insights</string>
-    <string name="title_distraction">Mind Distraction</string>
+    <string name="title_distraction">Meditation</string>
     <string name="title_logout">Logout</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="rewind"><![CDATA[<<]]></string>
+    <string name="forward"><![CDATA[>>]]></string>
+    <string name="pause">||</string>
 </resources>
+

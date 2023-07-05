@@ -23,8 +23,6 @@ public class TrackerFragment extends Fragment {
         binding = FragmentTrackerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textTracker;
-        trackerViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

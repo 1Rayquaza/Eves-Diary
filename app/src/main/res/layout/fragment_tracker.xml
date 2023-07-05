@@ -6,17 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.tracker.TrackerFragment">
 
-    <TextView
-        android:id="@+id/text_tracker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        android:paddingLeft="10dp"
+        android:background="#2C2B2B"
+        android:paddingTop="16dp"
+        android:paddingRight="10dp"
+        app:compactCalendarBackgroundColor="#FFFFFF"
+        app:compactCalendarCurrentDayBackgroundColor="#1AFFFFFF"
+        app:compactCalendarCurrentDayTextColor="#000000"
+        app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#000000"
+        app:compactCalendarCurrentSelectedDayTextColor="#FFFFFF"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        app:compactCalendarTargetHeight="400dp"
+        app:compactCalendarTextColor="#000000"
+        app:compactCalendarTextSize="14sp"
+        app:compactCalendarEventIndicatorStyle="fill_large_indicator"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="8dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
