@@ -14,8 +14,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="meditation" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../Downloads/meditation.svg" />
+                            <entry key="opacityPercent" value="50" />
+                            <entry key="outputName" value="fl2" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../Downloads/fl2.svg" />
                           </map>
                         </option>
                       </PersistentState>

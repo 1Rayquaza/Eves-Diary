@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.evesdiary"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
@@ -52,4 +51,5 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    implementation("com.google.firebase:firebase-database")
 }

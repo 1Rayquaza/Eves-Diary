@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="-20dp"
+    android:layout_marginBottom="40dp">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.tracker.TrackerFragment">
 
+    <TextView
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textFontWeight="800"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Year"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        android:textFontWeight="800"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Month"
+        android:textColor="#FFCADB"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/year"/>
+
+
+
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
-        android:id="@+id/compactcalendar_view"
+        android:id="@+id/calendar"
         android:layout_width="fill_parent"
         android:layout_height="400dp"
         android:paddingLeft="10dp"
@@ -18,8 +61,8 @@
         app:compactCalendarCurrentDayBackgroundColor="#1AFFFFFF"
         app:compactCalendarCurrentDayTextColor="#000000"
         app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="#000000"
-        app:compactCalendarCurrentSelectedDayTextColor="#FFFFFF"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#59FFCAD8"
+        app:compactCalendarCurrentSelectedDayTextColor="#000000"
         app:compactCalendarMultiEventIndicatorColor="#fff"
         app:compactCalendarTargetHeight="400dp"
         app:compactCalendarTextColor="#000000"
@@ -27,9 +70,126 @@
         app:compactCalendarEventIndicatorStyle="fill_large_indicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:elevation="8dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
+        app:layout_goneMarginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/month"
         />
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/due"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardCornerRadius="8dp"
+        android:background="@drawable/bg_gradient"
+
+        app:cardElevation="8dp"
+        app:cardMaxElevation="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/calendar">
+
+        <ImageView
+            android:src="@drawable/fl3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp">
+
+            <TextView
+                android:id="@+id/period_due_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Period Due in - "
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/due_days"
+                android:textColor="#FFCADB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:textFontWeight="800"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/period_due_text"
+                android:text="7 days"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/due">
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/prev_len"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Date : Date Month Year blah blah blah"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:id="@+id/prev_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="End Date : Date Month Year blah blah"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingLeft="15dp"
+                app:layout_constraintTop_toBottomOf="@id/prev_len"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:id="@+id/length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Previous Cycle Length - 5 days"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingLeft="15dp"
+                app:layout_constraintTop_toBottomOf="@id/prev_days"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
