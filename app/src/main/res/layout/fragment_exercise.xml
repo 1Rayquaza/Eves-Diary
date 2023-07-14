@@ -42,6 +42,65 @@
             android:layout_height="wrap_content" >
 
             <pl.droidsonroids.gif.GifImageView
+                android:src="@drawable/exercise2"
+                android:backgroundTint="#FFCAD8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/image2"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:paddingTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingHorizontal="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Child Pose"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/image2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingLeft="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/image2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:justificationMode="inter_word"
+                android:paddingHorizontal="15dp"
+                android:text="Child Pose offers relaxation and gentle stretching and supports menstrual health and overall well being."
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardMaxElevation="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center_horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <pl.droidsonroids.gif.GifImageView
                 android:src="@drawable/exercise1"
                 android:backgroundTint="#FFCAD8"
                 android:layout_width="wrap_content"
@@ -79,65 +138,6 @@
                 android:justificationMode="inter_word"
                 android:paddingHorizontal="15dp"
                 android:text="Cat-Cow pose during periods benefits spinal mobility, pelvic relaxation, hormonal balance, stress reduction, and mind-body connection."
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:cardMaxElevation="10dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
-        android:layout_gravity="center_horizontal">
-
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <pl.droidsonroids.gif.GifImageView
-                android:src="@drawable/exercise2"
-                android:backgroundTint="#FFCAD8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/image2"
-                app:layout_constraintTop_toTopOf="parent"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:paddingTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:paddingHorizontal="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Child Pose"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/image2"
-                app:layout_constraintStart_toStartOf="parent"
-                android:paddingLeft="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingTop="5dp"
-                app:layout_constraintTop_toBottomOf="@id/image2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:justificationMode="inter_word"
-                android:paddingHorizontal="15dp"
-                android:text="Child Pose offers relaxation and gentle stretching and supports menstrual health and overall well being."
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

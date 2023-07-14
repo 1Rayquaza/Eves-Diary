@@ -81,7 +81,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/due"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="205dp"
         app:cardCornerRadius="8dp"
         android:background="@drawable/bg_gradient"
 
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/calendar">
 
         <ImageView
-            android:src="@drawable/fl3"
+            android:src="@drawable/f7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"/>
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Period Due in - "
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center_horizontal"
                 android:paddingTop="10dp"
@@ -120,7 +120,7 @@
                 android:textColor="#FFCADB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="26sp"
+                android:textSize="32sp"
                 android:textFontWeight="800"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -150,13 +150,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="#4DFFCADB">
 
             <TextView
                 android:id="@+id/prev_len"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Start Date : Date Month Year blah blah blah"
+                android:text="Start Date : Date Month Year "
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
@@ -168,7 +169,7 @@
                 android:id="@+id/prev_days"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="End Date : Date Month Year blah blah"
+                android:text="End Date : Date Month Year"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:paddingLeft="15dp"

@@ -3,6 +3,7 @@ package com.example.evesdiary.ui.tracker;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -149,6 +150,11 @@ public class TrackerFragment extends Fragment {
     }
 
     public void fetchPeriodData(){
+        ProgressDialog progress = new ProgressDialog(getContext());
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+        progress.show();
 
         databaseReference.child("periodData").child(uuid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,14 +173,15 @@ public class TrackerFragment extends Fragment {
                 }
                 periodInfo = periodData;
 
-
                 updateViews(periodData);
+
+                progress.dismiss();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e("firebase", "The read failed: " + databaseError.getCode());
-
+                progress.dismiss();
             }
         });
     }
@@ -244,7 +251,7 @@ public class TrackerFragment extends Fragment {
             long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
             periodDueText.setText("Period Due in - ");
-            periodDue.setText(String.valueOf(diff));
+            periodDue.setText(String.valueOf(diff) + " days");
         }
 
         if(!periodData.getOnPeriod()){
