@@ -35,8 +35,8 @@ public class InsightsFragment extends Fragment {
                 new ArticleData("Menopause", "https://www.reddit.com/r/Menopause/wiki/index/#wiki_r.2Fmenopause_wiki", R.drawable.menopause),
                 new ArticleData("Self Care", "https://bloodybrilliant.wales/my-period/period-self-care/", R.drawable.selfcare),
                 new ArticleData("Period Products", "https://kidshealth.org/en/teens/supplies.html", R.drawable.products),
-                new ArticleData("Health Disorders", "https://kidshealth.org/en/teens/supplies.html", R.drawable.health_disorders),
-                new ArticleData("Cycle Phases", "https://kidshealth.org/en/teens/supplies.html", R.drawable.phases),
+                new ArticleData("Health Disorders", "https://my.clevelandclinic.org/health/diseases/14633-abnormal-menstruation-periods", R.drawable.health_disorders),
+                new ArticleData("Cycle Phases", "https://helloclue.com/articles/cycle-a-z/the-menstrual-cycle-more-than-just-the-period", R.drawable.phases),
 
         };
 

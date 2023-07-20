@@ -84,7 +84,6 @@ public class TrackerFragment extends Fragment {
 
         LocalDate currentdate = LocalDate.now();
         year.setText(""+currentdate.getYear());
-
         month.setText(""+currentdate.getMonth());
 
 //        Date date1s = new GregorianCalendar(2023, Calendar.MAY, 9).getTime();
@@ -93,7 +92,7 @@ public class TrackerFragment extends Fragment {
 //        Date date2e = new GregorianCalendar(2023, Calendar.JUNE, 16).getTime();
 //        Date date3s = new GregorianCalendar(2023, Calendar.JULY, 2).getTime();
 //        Date date3e = new GregorianCalendar(2023, Calendar.JULY, 6).getTime();
-//
+//779374
 //        List<PeriodData.PeriodDates> list = new ArrayList<>();
 //        list.add(new PeriodData.PeriodDates(date1s, date1e));
 //        list.add(new PeriodData.PeriodDates(date2s, date2e));
@@ -110,6 +109,10 @@ public class TrackerFragment extends Fragment {
                 Calendar prevDate = Calendar.getInstance();
                 prevDate.setTime(dateClicked);
                 prevDate.add(Calendar.DATE, -1);
+
+//                if(compactCalendar.getEvents(dateClicked).size() == 1){
+//
+//                }
 
                 if(periodInfo.getOnPeriod() == true && compactCalendar.getEvents(prevDate.getTime()).size() == 1){
                     List<PeriodData.PeriodDates> periodDates = periodInfo.getPeriodList();
