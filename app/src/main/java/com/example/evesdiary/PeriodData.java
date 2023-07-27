@@ -8,30 +8,27 @@ import java.util.List;
 
 public class PeriodData {
     public List<PeriodDates> periodList;
-    public boolean onPeriod;
-
     public PeriodData(){
-
     }
-    public PeriodData(List<PeriodDates> periodList, boolean onPeriod){
+    public PeriodData(List<PeriodDates> periodList){
         this.periodList = periodList;
-        this.onPeriod = onPeriod;
+    }
+
+    public boolean isOnPeriod(Date currDate){
+        if(periodList.isEmpty()){
+            return false;
+        }
+
+        PeriodDates lastDates = periodList.get(periodList.size()-1);
+        return lastDates.startDate.compareTo(currDate) * currDate.compareTo(lastDates.endDate) >= 0;
     }
 
     public List<PeriodDates> getPeriodList() {
         return periodList;
     }
 
-    public boolean getOnPeriod() {
-        return onPeriod;
-    }
-
 //    public void setPeriodList(List<PeriodDates> periodList) {
 //        this.periodList = periodList;
-//    }
-//
-//    public void setOnPeriod(boolean onPeriod) {
-//        this.onPeriod = onPeriod;
 //    }
 
     public static class PeriodDates {

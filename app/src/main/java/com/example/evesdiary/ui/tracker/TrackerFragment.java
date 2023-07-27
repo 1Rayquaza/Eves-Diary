@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,6 +33,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Year;
@@ -40,6 +43,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class TrackerFragment extends Fragment {
@@ -59,6 +63,7 @@ public class TrackerFragment extends Fragment {
     private CompactCalendarView compactCalendar;
 
     private PeriodData periodInfo;
+    private Date currDate;
 
 
 
@@ -83,58 +88,116 @@ public class TrackerFragment extends Fragment {
         uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         LocalDate currentdate = LocalDate.now();
+
         year.setText(""+currentdate.getYear());
         month.setText(""+currentdate.getMonth());
+        currDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd");
+        try {
+            currDate = dateFormat.parse(dateFormat.format(currDate));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
-//        Date date1s = new GregorianCalendar(2023, Calendar.MAY, 9).getTime();
-//        Date date1e = new GregorianCalendar(2023, Calendar.MAY, 13).getTime();
-//        Date date2s = new GregorianCalendar(2023, Calendar.JUNE, 12).getTime();
-//        Date date2e = new GregorianCalendar(2023, Calendar.JUNE, 16).getTime();
-//        Date date3s = new GregorianCalendar(2023, Calendar.JULY, 2).getTime();
-//        Date date3e = new GregorianCalendar(2023, Calendar.JULY, 6).getTime();
-//779374
-//        List<PeriodData.PeriodDates> list = new ArrayList<>();
-//        list.add(new PeriodData.PeriodDates(date1s, date1e));
-//        list.add(new PeriodData.PeriodDates(date2s, date2e));
-//        list.add(new PeriodData.PeriodDates(date3s, date3e));
-//
-//        PeriodData periodData = new PeriodData(list, false);
-//        uploadData(periodData);
         fetchPeriodData();
 
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                Calendar prevDate = Calendar.getInstance();
-                prevDate.setTime(dateClicked);
-                prevDate.add(Calendar.DATE, -1);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd");
+                Log.d("currDate", dateFormat.format(currDate));
+                Log.d("clickedDate", dateFormat.format(dateClicked));
 
-//                if(compactCalendar.getEvents(dateClicked).size() == 1){
-//
-//                }
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dateClicked);
+                Log.d("formatted Clicked Date", dateFormat.format(cal.getTime()));
 
-                if(periodInfo.getOnPeriod() == true && compactCalendar.getEvents(prevDate.getTime()).size() == 1){
-                    List<PeriodData.PeriodDates> periodDates = periodInfo.getPeriodList();
-                    Date startDate = periodDates.get(periodInfo.getPeriodList().size() - 1).getStartDate();
-
-                    periodInfo.getPeriodList().set(periodInfo.getPeriodList().size() - 1, new PeriodData.PeriodDates(startDate, dateClicked));
-                    markPeriod(dateClicked, dateClicked);
-                    uploadData(periodInfo);
-                    updateViews(periodInfo);
+                try {
+                    dateClicked = dateFormat.parse(dateFormat.format(dateClicked));
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
                 }
 
-                else {
+//                Toast.makeText(getActivity(), String.valueOf(dateClicked.equals(currDate)), Toast.LENGTH_LONG).show();
+                if(periodInfo.getPeriodList().isEmpty()){   // first period
                     Calendar c = Calendar.getInstance();
                     c.setTime(dateClicked);
                     c.add(Calendar.DATE, 4);
-                    periodInfo.onPeriod = true;
                     periodInfo.getPeriodList().add(new PeriodData.PeriodDates(dateClicked, c.getTime()));
 
                     markPeriod(dateClicked, c.getTime());
                     uploadData(periodInfo);
-
                     updateViews(periodInfo);
+                }
+
+                else{
+                    PeriodData.PeriodDates lastDates = periodInfo.getPeriodList().get(periodInfo.getPeriodList().size() - 1);
+
+                    if(compactCalendar.getEvents(dateClicked).size() == 1){ // undo functionality
+                        if(dateClicked.before(lastDates.startDate)){    // date clicked before last period
+                            Toast.makeText(getActivity(), "Cannot update a completed cycle!", Toast.LENGTH_LONG).show();
+                        }
+
+                        else if(dateClicked.equals((lastDates.endDate))){   // unmark from end date
+                            Calendar prevDate = Calendar.getInstance();
+                            prevDate.setTime(dateClicked);
+                            prevDate.add(Calendar.DATE, -1);
+                            Date pDate = prevDate.getTime();
+
+                            List<PeriodData.PeriodDates> updatedList = periodInfo.getPeriodList();
+                            updatedList.remove(updatedList.size()-1);
+                            updatedList.add(new PeriodData.PeriodDates(lastDates.startDate, pDate));
+
+                            periodInfo.periodList = updatedList;
+
+                            uploadData(periodInfo);
+                            updateViews(periodInfo);
+                        }
+
+                        else{   // clicked on mid way cycle
+                            Toast.makeText(getActivity(), "Kindly unmark dates sequentially from the end date!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else{   // clicked on a new date
+                        Calendar prevDate = Calendar.getInstance();
+                        prevDate.setTime(dateClicked);
+                        prevDate.add(Calendar.DATE, -1);
+                        Date pDate = prevDate.getTime();
+
+                        // date clicked is before start date of last period
+                        if (dateClicked.before(lastDates.startDate)) {
+                            Toast.makeText(getActivity(), "Cannot update a completed cycle!", Toast.LENGTH_LONG).show();
+                        }
+
+                        // extend by 1 day
+                        else if(pDate.equals(lastDates.endDate)){
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(dateClicked);
+                            c.add(Calendar.DATE, 1);
+
+                            List<PeriodData.PeriodDates> updatedList = periodInfo.getPeriodList();
+                            updatedList.remove(updatedList.size()-1);
+                            updatedList.add(new PeriodData.PeriodDates(lastDates.startDate, dateClicked));
+
+                            periodInfo.periodList = updatedList;
+
+//                            markPeriod(dateClicked, dateClicked);  will update by itself in updateViews
+                            uploadData(periodInfo);
+                            updateViews(periodInfo);
+                        }
+
+                        else{
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(dateClicked);
+                            c.add(Calendar.DATE, 4);
+                            periodInfo.getPeriodList().add(new PeriodData.PeriodDates(dateClicked, c.getTime()));
+
+//                            markPeriod(dateClicked, c.getTime());
+                            uploadData(periodInfo);
+                            updateViews(periodInfo);
+                        }
+                    }
                 }
             }
 
@@ -159,26 +222,27 @@ public class TrackerFragment extends Fragment {
         progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
         progress.show();
 
+        periodInfo = new PeriodData(new ArrayList<>());
+
         databaseReference.child("periodData").child(uuid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 PeriodData periodData = dataSnapshot.getValue(PeriodData.class);
-                Log.d("firebase", String.valueOf(periodData.getPeriodList()));
+                if(periodData != null){
+                    Log.d("firebase", String.valueOf(periodData.getPeriodList()));
+                    List<PeriodData.PeriodDates> periodDates = periodData.getPeriodList();
+                    Date endDate = periodDates.get(periodData.getPeriodList().size() - 1).getEndDate();
 
-                List<PeriodData.PeriodDates> periodDates = periodData.getPeriodList();
-                Date endDate = periodDates.get(periodData.getPeriodList().size() - 1).getEndDate();
+                    long diffInMillies = Math.abs(endDate.getTime() - currDate.getTime());
+                    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
-                long diffInMillies = Math.abs(endDate.getTime() - new Date().getTime());
-                long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+                    periodInfo = periodData;
 
-                if(diff > 1){
-                    periodData.onPeriod = false;
+                    updateViews(periodData);
+
+                    progress.dismiss();
                 }
-                periodInfo = periodData;
-
-                updateViews(periodData);
-
-                progress.dismiss();
             }
 
             @Override
@@ -187,6 +251,8 @@ public class TrackerFragment extends Fragment {
                 progress.dismiss();
             }
         });
+
+        progress.dismiss();
     }
 
     public void uploadData(PeriodData periodData){
@@ -196,6 +262,8 @@ public class TrackerFragment extends Fragment {
 
 
     public void updateViews(PeriodData periodData){
+        compactCalendar.removeAllEvents();  //
+
         List<PeriodData.PeriodDates> periodList = periodData.getPeriodList();
         if(periodList.size() == 0) return;
 
@@ -221,25 +289,29 @@ public class TrackerFragment extends Fragment {
             minLen = min(minLen, pCLength);
             maxLen = max(maxLen, pCLength);
 
-            if(!periodData.getOnPeriod() && i == periodList.size()-1){
+            // if currently onPeriod, then no need to include this cycle for updation
+            if(!periodData.isOnPeriod(currDate) && i == periodList.size()-1){
                 pCLen = pCLength+1;
             }
 
-            else if (periodData.getOnPeriod() && i == periodList.size()-2){
+            else if (periodData.isOnPeriod(currDate) && i == periodList.size()-2){
                 pCLen = pCLength+1;
             }
         }
-
+        if(periodList.size() == 1){
+            maxLen = minLen = 28;
+        }
         avgLen = (maxLen + minLen)/2;
-        if(periodInfo.getOnPeriod()){
+
+        if(periodInfo.isOnPeriod(currDate)){
             List<PeriodData.PeriodDates> periodDates = periodInfo.getPeriodList();
             Date endDate = periodDates.get(periodInfo.getPeriodList().size() - 1).getEndDate();
 
-            long diffInMillies = Math.abs(endDate.getTime() - new Date().getTime());
-            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            long diffInMillies = Math.abs(endDate.getTime() - currDate.getTime());
+            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) + 1;
 
             periodDueText.setText("Period Ends in - ");
-            periodDue.setText(String.valueOf(diff));
+            periodDue.setText(String.valueOf(diff) + " days");
         }
         else{
             List<PeriodData.PeriodDates> periodDates = periodInfo.getPeriodList();
@@ -250,21 +322,20 @@ public class TrackerFragment extends Fragment {
             c.add(Calendar.DATE, (int) avgLen);
             Date predicted = c.getTime();
 
-            long diffInMillies = Math.abs(predicted.getTime() - new Date().getTime());
-            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+            long diffInMillies = Math.abs(predicted.getTime() - currDate.getTime());
+            long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) + 1;
 
             periodDueText.setText("Period Due in - ");
             periodDue.setText(String.valueOf(diff) + " days");
         }
 
-        if(!periodData.getOnPeriod()){
+        if(!periodData.isOnPeriod(currDate)){
             long diffInMillies = Math.abs(periodList.get(periodList.size()-1).getEndDate().getTime() - periodList.get(periodList.size()-1).getStartDate().getTime());
             pDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-
         }
 
-        // curr ka start date h bss abhi toh prev cycle ka hone is must for pDays
-        else if(periodData.getOnPeriod() && periodList.size() >= 2) {
+        // if onPeriod then this cycle may change so do not take this into considerations
+        else if(periodData.isOnPeriod(currDate) && periodList.size() >= 2) {
             long diffInMillies = Math.abs(periodList.get(periodList.size()-2).getEndDate().getTime() - periodList.get(periodList.size()-2).getStartDate().getTime());
             pDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
