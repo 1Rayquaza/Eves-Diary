@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.evesdiary'
+    namespace 'com.rishita.evesdiary'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.evesdiary"
+        applicationId "com.rishita.evesdiary"
         minSdk 26
         targetSdk 33
         versionCode 1

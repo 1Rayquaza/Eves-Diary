@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "49035908986",
+    "firebase_url": "https://eve-s-diary-default-rtdb.firebaseio.com",
     "project_id": "eve-s-diary",
     "storage_bucket": "eve-s-diary.appspot.com"
   },
@@ -14,7 +15,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "49035908986-oo9bd75nfdjes1b9qm4ce01andq7l5c0.apps.googleusercontent.com",
+          "client_id": "49035908986-clc0pnfcdg8slfh9q9mujuak0cpnbjd0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evesdiary",
+            "certificate_hash": "1a1d3d657257e5e615e85339c88331138c1e8651"
+          }
+        },
+        {
+          "client_id": "49035908986-k2uu4qqo0qpg23cocmvsvr9aku33fa1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evesdiary",
+            "certificate_hash": "ff07743c0b78d6d8f57f209c1e8aae39a3c45c5b"
+          }
+        },
+        {
+          "client_id": "49035908986-h69hqc5178df4eqdb1fvv4u4v6qef4bj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +44,36 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "49035908986-oo9bd75nfdjes1b9qm4ce01andq7l5c0.apps.googleusercontent.com",
+              "client_id": "49035908986-h69hqc5178df4eqdb1fvv4u4v6qef4bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49035908986:android:451669b6252a9e4b87e8c3",
+        "android_client_info": {
+          "package_name": "com.rishita.evesdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49035908986-h69hqc5178df4eqdb1fvv4u4v6qef4bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCE6TKtKqobaq-b_zpjbVM1c6YhUcmInE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49035908986-h69hqc5178df4eqdb1fvv4u4v6qef4bj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
