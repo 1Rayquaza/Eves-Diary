@@ -1,6 +1,5 @@
-# Eve’s Diary 
 
-![Eve's Diary Logo](/app/src/main/res/mipmap-xxxhdpi/ic_eve.png)
+![Eve's Diary Logo](screenshots/eves_diary.png)
 
 Welcome to Eve's Diary - your ultimate companion for tracking menstrual cycles, gaining valuable insights, and promoting self-care during your period. Embrace your femininity and power as we celebrate the strength and beauty of womanhood. Let's embark on this journey together!
 
