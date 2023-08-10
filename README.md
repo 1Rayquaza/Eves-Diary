@@ -3,6 +3,9 @@
 
 Welcome to Eve's Diary - your ultimate companion for tracking menstrual cycles, gaining valuable insights, and promoting self-care during your period. Embrace your femininity and power as we celebrate the strength and beauty of womanhood. Let's embark on this journey together!
 
+<a href="https://play.google.com/store/apps/details?id=com.rishita.evesdiary"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height=100px /></a>
+
+
 ## Features
 ### Period Tracker
 
